@@ -3,14 +3,14 @@ from django.views import generic
 from .models import Post
 from .forms import CommentForm
 # Create your views here.
-
+from django.views.decorators.csrf import csrf_exempt
 
 class PostList(generic.ListView):
     queryset=Post.objects.filter(status=1).order_by('-created_on')
     template_name='index.html'
 
 
-
+@csrf_exempt
 def post_detail(request, slug):
     template_name = 'post_detail.html'
     post = get_object_or_404(Post, slug=slug)
