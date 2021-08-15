@@ -27,6 +27,7 @@ class Comment(models.Model):
     post=models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')  #many to one relationship with post model 
     name = models.CharField(max_length=80)
     email = models.EmailField()
+    age=models.IntegerField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
